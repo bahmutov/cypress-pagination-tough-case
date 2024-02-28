@@ -66,7 +66,7 @@ export const checkPage3 = (item) => {
     .then((enabled) => {
       if (enabled) {
         cy.get('button#next').click()
-        cy.get('li').first().stable('text', 1500, { timeout: 3000 })
+        cy.get('li').first().stable('element', 1500, { timeout: 3000 })
         checkPage3(item)
       } else {
         cy.log('**end of the**')

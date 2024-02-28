@@ -19,7 +19,7 @@
   "homepage": "https://github.com/bahmutov/cypress-pagination-tough-case#readme",
   "devDependencies": {
     "cypress": "^13.6.6",
-    "cypress-map": "^1.31.0",
+    "cypress-map": "^1.32.0",
     "prettier": "^3.2.5"
   }
 }
