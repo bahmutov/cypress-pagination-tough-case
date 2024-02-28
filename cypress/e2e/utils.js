@@ -87,7 +87,9 @@ export const checkPage3 = (item) => {
 export const checkPage4 = (item, page = 1) => {
   cy.get(`ul[data-page=${page}]`)
   cy.get('li').log(`**page ${page} has list items**`)
-  cy.contains('li', item).should('not.exist')
+  // we can use zero timeout since we are on the right page
+  // and we know the LI elements have finished loading
+  cy.contains('li', item, { timeout: 0 }).should('not.exist')
   cy.get('button#next')
     .invoke('is', ':enabled')
     .then((enabled) => {
