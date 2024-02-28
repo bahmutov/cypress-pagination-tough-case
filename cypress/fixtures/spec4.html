@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <main>
+      <ul id="list">
+        loading...
+      </ul>
+      <button id="next">Next ▶</button>
+    </main>
+    <script>
+      // the list sets the correct data attribute
+      // with the rendered page number
+      const list = document.getElementById('list')
+      const next = document.getElementById('next')
+
+      setTimeout(() => {
+        list.setAttribute('data-page', 1)
+        list.innerHTML = `
+          <li>first</li>
+          <li>second</li>
+          <li>third</li>
+        `
+      }, 1000)
+      next.addEventListener('click', () => {
+        setTimeout(() => {
+          list.setAttribute('data-page', 2)
+          list.innerHTML = `
+            <li>fourth</li>
+            <li>fifth</li>
+            <li>sixth</li>
+          `
+        }, 1000)
+        next.setAttribute('disabled', true)
+      })
+    </script>
+  </body>
+</html>
