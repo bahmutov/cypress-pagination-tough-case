@@ -3,11 +3,10 @@
 import { checkPage1 } from './utils'
 
 beforeEach(() => {
-  cy.visit('cypress/fixtures/spec1.html')
+  cy.visit('cypress/fixtures/spec2.html')
 })
 
 it('confirms the list has no such item', () => {
-  cy.visit('cypress/fixtures/spec1.html')
   // text of an item that should NOT be in the list
   const item = 'apples'
   checkPage1(item)

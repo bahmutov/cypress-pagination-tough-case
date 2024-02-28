@@ -5,17 +5,24 @@
   <body>
     <main>
       <ul id="list">
-        <li>first</li>
-        <li>second</li>
-        <li>third</li>
+        loading...
       </ul>
       <button id="next">Next ▶</button>
     </main>
     <script>
-      // the page is _very fast_
+      // the initial list loads slowly,
+      // but then the page is very fast
       // and the new page loads synchronously
       const list = document.getElementById('list')
       const next = document.getElementById('next')
+
+      setTimeout(() => {
+        list.innerHTML = `
+          <li>first</li>
+          <li>second</li>
+          <li>third</li>
+        `
+      }, 1000)
       next.addEventListener('click', () => {
         list.innerHTML = `
           <li>fourth</li>
