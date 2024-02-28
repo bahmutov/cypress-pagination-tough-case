@@ -2,6 +2,8 @@
 
 > Example of a pagination that has tough challenges for e2e testing
 
+📝 Read the blog post [Solve Tough Pagination Cases Using Cypress](https://glebbahmutov.com/blog/solve-tough-pagination-cases-using-cypress/)
+
 ## Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2024
