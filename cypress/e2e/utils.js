@@ -20,7 +20,7 @@ export const checkPage1 = (item) => {
         cy.get('button#next').click()
         checkPage1(item)
       } else {
-        cy.log('**end of the**')
+        cy.log('**end of the list**')
       }
     })
 }
@@ -43,7 +43,7 @@ export const checkPage2 = (item) => {
         cy.get('button#next').click()
         checkPage2(item)
       } else {
-        cy.log('**end of the**')
+        cy.log('**end of the list**')
       }
     })
 }
@@ -52,14 +52,14 @@ export const checkPage2 = (item) => {
  * Checks if the given item is not present on the page and
  * recursively clicks the "Next" button until the item is found
  * or the button is disabled.
- * Confirm the list page has rendered before checking
- * by checking a data attribute.
+ * Waits for the items to load first.
+ * When going to the next page, waits for the current list
+ * to not change its text for 1500ms.
  * @param {string} item - The item to check for on the page.
- * @param {number} page - The current page number (1-based), default 1
  * @returns {void}
  */
-export const checkPage3 = (item, page = 1) => {
-  cy.get('li').log(`**page ${page} has list items**`)
+export const checkPage3 = (item) => {
+  cy.get('li').log('**has list items**')
   cy.contains('li', item).should('not.exist')
   cy.get('button#next')
     .invoke('is', ':enabled')
@@ -69,7 +69,7 @@ export const checkPage3 = (item, page = 1) => {
         cy.get('li').first().stable('element', 1500, { timeout: 3000 })
         checkPage3(item)
       } else {
-        cy.log('**end of the**')
+        cy.log('**end of the list**')
       }
     })
 }
@@ -85,6 +85,7 @@ export const checkPage3 = (item, page = 1) => {
  * @returns {void}
  */
 export const checkPage4 = (item, page = 1) => {
+  cy.get(`ul[data-page=${page}]`)
   cy.get('li').log(`**page ${page} has list items**`)
   cy.contains('li', item).should('not.exist')
   cy.get('button#next')
@@ -92,10 +93,9 @@ export const checkPage4 = (item, page = 1) => {
     .then((enabled) => {
       if (enabled) {
         cy.get('button#next').click()
-        cy.get('li').first().stable('element', 1500, { timeout: 3000 })
-        checkPage3(item)
+        checkPage4(item, page + 1)
       } else {
-        cy.log('**end of the**')
+        cy.log('**end of the list**')
       }
     })
 }
