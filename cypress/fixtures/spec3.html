@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <main>
+      <ul id="list">
+        loading...
+      </ul>
+      <button id="next">Next ▶</button>
+    </main>
+    <script>
+      // the initial list loads slowly,
+      // and when clicking on the next button
+      // there is a delay before the new list is shown
+      const list = document.getElementById('list')
+      const next = document.getElementById('next')
+
+      setTimeout(() => {
+        list.innerHTML = `
+          <li>first</li>
+          <li>second</li>
+          <li>third</li>
+        `
+      }, 1000)
+      next.addEventListener('click', () => {
+        setTimeout(() => {
+          list.innerHTML = `
+            <li>fourth</li>
+            <li>fifth</li>
+            <li>sixth</li>
+          `
+        }, 1000)
+        next.setAttribute('disabled', true)
+      })
+    </script>
+  </body>
+</html>
