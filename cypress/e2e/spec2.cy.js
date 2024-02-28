@@ -1,6 +1,10 @@
 /// <reference types="cypress" />
 
+// https://github.com/bahmutov/cypress-slow-down
+import { slowCypressDown } from 'cypress-slow-down'
 import { checkPage2 as checkPage } from './utils'
+
+slowCypressDown(200)
 
 beforeEach(() => {
   cy.visit('cypress/fixtures/spec2.html')
