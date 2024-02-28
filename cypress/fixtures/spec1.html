@@ -1,10 +1,28 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="app.css" />
+  </head>
   <body>
-    <ul id="list">
-      <li>first</li>
-      <li>second</li>
-      <li>third</li>
-    </ul>
-    <div id="next">Next ▶</div>
+    <main>
+      <ul id="list">
+        <li>first</li>
+        <li>second</li>
+        <li>third</li>
+      </ul>
+      <button id="next">Next ▶</button>
+    </main>
+    <script>
+      // the page is _very fast_
+      // and the new page loads synchronously
+      document.getElementById('next').addEventListener('click', () => {
+        const list = document.getElementById('list')
+        list.innerHTML = `
+          <li>fourth</li>
+          <li>fifth</li>
+          <li>sixth</li>
+        `
+        document.getElementById('next').setAttribute('disabled', true)
+      })
+    </script>
   </body>
 </html>

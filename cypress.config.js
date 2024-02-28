@@ -5,9 +5,12 @@ module.exports = defineConfig({
     // baseUrl, etc
     supportFile: false,
     fixturesFolder: false,
+    viewportHeight: 200,
+    viewportWidth: 300,
+    defaultCommandTimeout: 1000,
     setupNodeEvents(on, config) {
       // implement node event listeners here
       // and load any plugins that require the Node environment
     },
-  }
+  },
 })
